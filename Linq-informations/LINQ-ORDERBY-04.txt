@@ -1,0 +1,81 @@
+Order by in LINQ -
+
+orderby in linq is used to sort the data as their ascending or descending order.
+The expression for the order by is given below.
+
+
+var query = from person in people
+            orderby person.LastName descending
+            select person;
+
+
+var query = from person in people
+            orderby person.LastName, person.FirstName
+            select person;
+
+
+var query = from person in people
+            orderby person.LastName ascending, person.Age descending
+            select person;
+
+
+
+var query = people
+    .OrderBy(p => p.LastName)
+    .ThenBy(p => p.FirstName);
+
+
+
+var query = people
+    .OrderByDescending(p => p.LastName)
+    .ThenByDescending(p => p.FirstName);
+
+
+
+• Order By Combination with Group By -
+
+var query = from p in products
+            group p by p.Category into g
+            orderby g.Sum(x => x.Price) descending   // Order groups by sum of Price
+            select new
+            {
+                Category = g.Key,
+                TotalPrice = g.Sum(x => x.Price),
+                Count = g.Count()
+            };
+
+foreach (var item in query)
+{
+    Console.WriteLine($"Category: {item.Category}, Total: {item.TotalPrice}, Count: {item.Count}");
+}
+
+
+var query = products
+    .GroupBy(p => p.Category)
+    .OrderByDescending(g => g.Sum(p => p.Price))
+    .Select(g => new
+    {
+        Category = g.Key,
+        TotalPrice = g.Sum(p => p.Price),
+        Count = g.Count()
+    });
+
+foreach (var item in query)
+{
+    Console.WriteLine($"Category: {item.Category}, Total: {item.TotalPrice}, Count: {item.Count}");
+}
+
+var query = from p in products
+            group p by p.Category into g
+            orderby g.Count() descending, g.Key   // Sort by count of items in descending order, then by category name
+            select new
+            {
+                Category = g.Key,
+                Count = g.Count(),
+                TotalPrice = g.Sum(x => x.Price)
+            };
+
+foreach (var item in query)
+{
+    Console.WriteLine($"Category: {item.Category}, Count: {item.Count}, Total: {item.TotalPrice}");
+}

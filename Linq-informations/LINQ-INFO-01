@@ -1,0 +1,25 @@
+Introduction of LINQ -
+
+LINQ stands for Language integrated query, used in .net framework to write db queries in .net programming languages.
+ORM's used to convert the LINQ into SQL to perfome the query operations on the db when needed.
+
+
+How the three parts of query operation executes?
+Most of the database query operations are divided into three operational parts that are as follows -
+
+1- Initilization, 2- Execution, 3- Enumeration
+
+A- Initilization - Also defined and DIFINITION of query. in this part the query used to be written and structurized, carried out as 
+value for the variables.
+
+E.G. -
+var query  = (FROM item IN Table_Name WHERE Conditons SELECT values)
+
+B- Execution - With Extention methods or for loops, the query execution takes place and applies the query on the db to perform the 
+operation.
+E.G. - 
+(for item in query){} or query.ToList() or query.FirstOrDefault()
+
+C- Enumeration - Iteration part of the data. utilized loop to iterate through each record of the result.
+
+

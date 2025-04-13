@@ -1,0 +1,20 @@
+What is IEnumberable -
+
+An interface that used for read only operations on the collections of data, in-memory.
+IEnumberable does not support data manupulation operations/query like add, remove, clear.
+
+It pre fetched the data form database then applies the query onto the data.
+
+
+What is ICollection -
+
+An Extended version of IEnumerable, with the ability to manupulate the collection data, in-memory.
+Similerly to IEnumerable, it fetched the data into memory then applies the query on the data.
+
+
+
+What is IQueryable -
+
+An interface that uses to apply queries on the database directly rather then handling in-memory.
+
+All of these interfaces are Enumerators for the collection type data like List, Dictionary, HashSet etc

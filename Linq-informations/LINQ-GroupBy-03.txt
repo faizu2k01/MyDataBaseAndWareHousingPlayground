@@ -1,0 +1,39 @@
+• GROUP BY query in LINQ - LINQ SYNTAX CAN NOT BE CAPITOL CASE ALL CHARS SHOULD BE SMALL CASE
+
+A - Expression verison of GROUP BY Syntex - 
+
+
+Initilization -
+var query = (FROM item IN _DBContext.Table.AsNoTracking() 
+            GROUP item By item.column_name IN g
+            SELECT new CustomObjectType{
+                Id = g.Key,
+                Result = g.ToList(),
+                TotalCount = g.Count()
+            })
+
+Execution -
+
+for item in query
+{
+    Console.WriteLine(item.Id, item.TotalCount)
+}
+
+
+B- Extension method verison of GROUP BY Syntex -
+
+var result = _DBContext.Table.GroupBy(x => x.column_name).Select(y => new CustomObjectType(){
+     Id = g.Key,
+     Result = g.ToList(),
+     TotalCount = g.Count()
+}).ToList();
+
+
+• Applying where cluase in LINQ with GROUP BY -
+
+Befor GroupBy writing where clause operatos on the table row, after GroupBy writing Where caluse operatos on the Aggregated data similar as
+Having clause in SQL.
+
+
+FROM item in Table WHERE item.Id = "you" GROUP item By item.name IN I Where I.Key = "Me" SELECT I.ToList()
+

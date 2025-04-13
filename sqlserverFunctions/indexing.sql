@@ -1,4 +1,4 @@
--- Indexing in sql is used to otimize the data retirval performace, basically incorporation of indexing into the data table allow the
+-- Indexing in sql is used to optimize the data retirval performace, basically incorporation of indexing into the data table allow the
 -- sql to have indexs for each row of the data table, it helps to reduces the sql to search whole table instead, the data can be 
 -- easly retrieved by its index values 
 -- indexing makes the read operation easier but harder the write operation
